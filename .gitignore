@@ -112,3 +112,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore Firebase Creds
+firebase_creds.json
+
+.DS_Store
