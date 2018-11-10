@@ -6,22 +6,11 @@ import os
 import datetime
 from flask import Flask, jsonify
 import requests
-import firebase_admin
-from firebase_admin import credentials, db
 
 from firebase import firebase
 
 from flask import Flask, abort, request
 from bs4 import BeautifulSoup
-
-from dotenv import load_dotenv
-
-# Load Environment variables
-load_dotenv()
-
-# Authenticate Firebase
-cred = credentials.Certificate(os.getenv("GOOGLE_KEY_PATH"))
-firebase_admin.initialize_app(cred)
 
 firebase = firebase.FirebaseApplication('https://thibitisha-36660.firebaseio.com', None)
 
@@ -105,16 +94,19 @@ def login():
   email = request.json['email']
   password = request.json['password']
   result = firebase.get('/users', None)
-  print(">>>>>>>>>>>>>>", result)
-  return True
+  for identifier in result:
+    if (result[identifier]['email'] == email and result[identifier]['password'] == password):
+      return jsonify({"message": "User authenticated successfuly"}), 200
+  return jsonify({"message": "Login failed"})
+  
 
 @app.route('/upvote', methods=['POST'])
 def upvote():
-
   return "upvote"
 
 @app.route('/downvote', methods=['POST'])
 def downvote():
+
   return "downvote"
 
 @app.route('/comment', methods=['POST'])
