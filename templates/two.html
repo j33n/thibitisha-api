@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <script>
+    function increase(){
+        var count=document.getElementById("verified_art");
+        var number=count.innerHTML;
+        number++;
+        count.innerHTML=number;
+    }
+    function decrease(){
+        var count=document.getElementById("flagged_art");
+        var number=count.innerHTML;
+        number--;
+        count.innerHTML=number;
+    }
+    </script>
+    <title>Thibitisha</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+                <button type="button" class="btn  btn-danger invisble">
+                        <span class="glyphicon glyphicon-remove"></span> FAKE NEWS
+                </button>
+                <h2><b> Hello, world!</b></h2>
+                <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> 
+                
+                <button type="button" class="btn btn-default" onclick="increase()">
+                        <span class="glyphicon glyphicon-triangle-top"></span> Verify <span id="verified_art" value="1">1</span> 
+                </button>
+                
+                <button type="button" class="btn  btn-danger" onclick="decrease()">
+                        <span class="glyphicon glyphicon-triangle-bottom"></span> Flag  <span id="flagged_art" value="1">1</span> 
+                </button>
+                      
+               
+                
+        </div>
+    </div>
+    
+</body>
+</html>
