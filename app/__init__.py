@@ -96,7 +96,7 @@ def sign_up():
   new_user = request.json
   # save_in_firebase
   result = firebase.post('/users', new_user, params={'print': 'pretty'})
-  return jsonify(result), 201
+  return json.dumps(result), 201
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -105,10 +105,12 @@ def login():
   email = request.json['email']
   password = request.json['password']
   result = firebase.get('/users', None)
+  print(">>>>>>>>>>>>>>", result)
   return True
 
 @app.route('/upvote', methods=['POST'])
 def upvote():
+
   return "upvote"
 
 @app.route('/downvote', methods=['POST'])
